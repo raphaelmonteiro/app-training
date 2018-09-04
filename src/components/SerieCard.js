@@ -4,13 +4,17 @@ import {
     Text, 
     StyleSheet, 
     Dimensions,
-    Image } from 'react-native'
+    Image,
+    TouchableOpacity } from 'react-native'
 
-const SerieCard = ({ serie, isFirstColumn }) => (
-    <View style={[
-        styles.container, 
-        isFirstColumn ? styles.firstColumn : styles.secondColumn
-    ]}>
+const SerieCard = ({ serie, isFirstColumn, onNavigate }) => (
+    <TouchableOpacity 
+        onPress={onNavigate}
+        style={[
+            styles.container, 
+            isFirstColumn ? styles.firstColumn : styles.secondColumn
+        ]}
+    >
         <View style={styles.card}>
             <Image 
                 source={{uri: serie.img}}
@@ -21,7 +25,7 @@ const SerieCard = ({ serie, isFirstColumn }) => (
                 <Text style={styles.cardTitle}>{serie.title}</Text>
             </View>
         </View>
-    </View>
+    </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
